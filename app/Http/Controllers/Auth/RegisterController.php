@@ -62,11 +62,11 @@ use RegistersUsers;
         $user->name = $user->getName();
         $user->update();
         /*         * *********************** */
-        event(new Registered($user));
-        event(new UserRegistered($user));
+        // event(new Registered($user));
+        // event(new UserRegistered($user));
         $this->guard()->login($user);
         UserVerification::generate($user);
-        UserVerification::send($user, 'User Verification', config('mail.recieve_to.address'), config('mail.recieve_to.name'));
+        // UserVerification::send($user, 'User Verification', config('mail.recieve_to.address'), config('mail.recieve_to.name'));
         return $this->registered($request, $user) ?: redirect($this->redirectPath());
     }
 
